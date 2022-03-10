@@ -1,0 +1,73 @@
+THREADING & MULTI-PROCESSING
+
+threading: 
+
+
+how to run code concurrently: using threading
+why do we want to use threading => 
+basically we want to use threading whenever it is going to significantly speed up our program.
+now, this speed up comes from running different tasks concurrently
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+=> 
+import secrets
+import time
+start = time.perf_counter()
+ 
+ 
+def do_something():
+   print('sleeping 1 sec')
+   time.sleep(1)
+   print('done sleeping')
+ 
+do_something()
+do_something()
+ 
+finish = time.perf_counter()
+print(f'Finished in {round (finish - start, 2)} second(s)')
+////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+# result
+# sleeping 1 sec
+# done sleeping
+# sleeping 1 sec
+# done sleeping
+# Finished in 2.01 second(s)
+ 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# when do_something function is called then => sleep for 1 sec
+# 1 sec hone ke baad hi... doosra do_something chala ... => then again sleep 1 sec
+# that's why total time = 2sec
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function call is cpu bound and sleep is i/o bound.
+
+threading will be benefited when our tasks are i/o bound … which means we are doing lot of waiting.. 
+
+and if our task is more of cpu bond . then there threading is not benefited,
+as some programs run slower using threads.. because of the added overhead cost.. when they are creating and destroying different threads..
+ then we use multi processing or run in parallel instead
+
+when we run something concurrently using thread, it is not actually going to run the code at the same time . it just gives the illusion of running the code at the same time..
+because when it comes to a point just waiting around,  => it is just going to go ahead and move forward with the script and run other code while the i/o operations finish.. 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+when we use threading,
+ when one function starts .. our code just moved ahead..then suddenly another  function starts ..
+aur udhaar phle function ka io khatm bhi nii hua h.. aur 2nd start ho gya ..
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+(its not like that both the function are running at the same time)
+it is just giving us the illusion that codes are running at same time 
+and then .. we will do the whole work sooner.
+
+
+
